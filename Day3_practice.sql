@@ -1,1 +1,1 @@
-SELECT
+---chị nợ tạm buổi này để học tiếp buổi 4 nhé
