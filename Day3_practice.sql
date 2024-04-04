@@ -24,3 +24,15 @@ SELECT NAME FROM EMPLOYEE
 WHERE SALARY>2000 
 AND MONTHS<10
 ORDER BY EMPLOYEE_ID;
+---ex 9
+SELECT PRODUCT_ID FROM PRODUCTS
+WHERE LOW_FATS = 'Y' AND RECYCLABLE = 'Y';
+---ex 10
+SELECT NAME FROM CUSTOMER
+WHERE referee_id!=2 OR referee_id is null;
+---ex 11
+select name, population, area from World where (area >= 3000000 OR population >= 25000000);
+---ex 12
+select distinct author_id as id from Views
+where author_id = viewer_id 
+order by id;
