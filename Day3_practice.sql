@@ -36,3 +36,18 @@ select name, population, area from World where (area >= 3000000 OR population >=
 select distinct author_id as id from Views
 where author_id = viewer_id 
 order by id;
+---ex 13
+SELECT part, assembly_step
+FROM parts_assembly
+WHERE finish_date IS NULL;
+---ex 14
+SELECT
+ *
+FROM
+ lyft_drivers
+WHERE
+ yearly_salary <= 30000 OR
+ yearly_salary >= 70000
+---ex 15
+select advertising_channel from uber_advertising;
+WHERE money_spent > 100000 AND year = 2019;
