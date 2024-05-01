@@ -60,3 +60,42 @@ FROM pharmacy_sales
 WHERE total_sales<cogs
 GROUP BY manufacturer
 ORDER BY total_loss DESC
+
+---EX9
+---BUOC 1: PHAN TICH YEU CAU
+---1.OUTPUT (GOC/PHAI SINH): id | movie | description | rating
+---2.INPUT
+---3.DIEU KIEN LOC THEO TRUONG NAO (GOC HAY PHAI SINH): id, description, rating
+SELECT * FROM CINEMA
+WHERE ID%2=1 AND description<>'boring'
+ORDER BY rating DESC
+
+---EX10
+---BUOC 1: PHAN TICH YEU CAU
+---1.OUTPUT (GOC/PHAI SINH): teacher_id, cnt unique
+---2.INPUT
+---3.DIEU KIEN LOC THEO TRUONG NAO (GOC HAY PHAI SINH): group by teacher
+SELECT teacher_id,
+COUNT(DISTINCT subject_id) AS cnt
+FROM teacher
+GROUP BY teacher_id
+
+---EX11
+---BUOC 1: PHAN TICH YEU CAU
+---1.OUTPUT (GOC/PHAI SINH): user_id, followers_count
+---2.INPUT
+---3.DIEU KIEN LOC THEO TRUONG NAO (GOC HAY PHAI SINH): group by, order by user_id ASC
+SELECT user_id, COUNT(follower_id) AS followers_count
+FROM Followers
+GROUP BY user_id 
+ORDER BY user_id
+
+---EX12
+---BUOC 1: PHAN TICH YEU CAU
+---1.OUTPUT (GOC/PHAI SINH): class, COUNT student >=5
+---2.INPUT
+---3.DIEU KIEN LOC THEO TRUONG NAO (GOC HAY PHAI SINH): GROUP BY class
+SELECT class
+FROM Courses
+GROUP BY class
+HAVING COUNT(student)>=5
