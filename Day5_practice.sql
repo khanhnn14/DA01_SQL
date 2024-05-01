@@ -1,1 +1,62 @@
----chị nợ tạm để mở khóa buổi 6 sẽ quay lại làm sau
+---EX1
+SELECT DISTINCT CITY FROM STATION
+WHERE ID%2=0
+  
+---EX2
+SELECT COUNT(CITY) - COUNT(DISTINCT CITY) FROM STATION
+  
+---EX4
+---BUOC 1 PHAN TICH YEU CAU
+---1.OUTPUT GOC/PHAI SINH: MEAN=TONG ITEM/SO DON HANG
+---2.INPUT
+---3.DIEU KIEN LOC THEO TRUONG NAO (GOC HAY PHAI SINH)
+SELECT ROUND(CAST(SUM(item_count*order_occurrences)/SUM(order_occurrences) AS
+DECIMAL),1) AS mean
+FROM items_per_order;
+
+--EX5
+---BUOC 1: PHAN TICH YEU CAU
+---1.OUTPUT (GOC/PHAI SINH): candidate_id	
+---2.INPUT
+---3.DIEU KIEN LOC THEO TRUONG NAO (GOC HAY PHAI SINH)
+SELECT candidate_id
+FROM candidates
+WHERE skill in ('Python','Tableau','PostgreSQL')
+GROUP BY candidate_id
+HAVING COUNT(skill)=3;
+
+---EX6
+---BUOC 1: PHAN TICH YEU CAU
+---1.OUTPUT (GOC/PHAI SINH): USER_ID, DAYS BETWEEN=MAX(post_date)-MIN(post_date)
+---2.INPUT
+---3.DIEU KIEN LOC THEO TRUONG NAO (GOC HAY PHAI SINH)
+SELECT USER_ID,
+DATE(MAX(post_date))-DATE(MIN(post_date)) AS DAYS_BETWEEN
+FROM posts
+WHERE post_date>='2021-01-01' AND post_date<'2022-01-01'
+GROUP BY USER_ID
+HAVING COUNT(post_id)>=2
+
+---EX7
+---BUOC 1: PHAN TICH YEU CAU
+---1.OUTPUT (GOC/PHAI SINH): CARD_NAME, DIFFERENCE
+---2.INPUT
+---3.DIEU KIEN LOC THEO TRUONG NAO (GOC HAY PHAI SINH)
+SELECT CARD_NAME,
+MAX(issued_amount)-MIN(issued_amount) AS DIFFERENCE
+FROM monthly_cards_issued
+GROUP BY CARD_NAME
+ORDER BY DIFFERENCE DESC
+
+---EX8
+---BUOC 1: PHAN TICH YEU CAU
+---1.OUTPUT (GOC/PHAI SINH): manufacturer, drug_count, total_loss=cogs-total_sales
+---2.INPUT
+---3.DIEU KIEN LOC THEO TRUONG NAO (GOC HAY PHAI SINH): total_sales<cogs
+SELECT manufacturer,
+COUNT(drug) AS drug_count,
+ABS(SUM(cogs-total_sales)) AS total_loss
+FROM pharmacy_sales
+WHERE total_sales<cogs
+GROUP BY manufacturer
+ORDER BY total_loss DESC
