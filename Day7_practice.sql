@@ -34,3 +34,24 @@ and EXTRACT(year from sent_date)=2022
 GROUP BY sender_id
 ORDER BY message_count DESC
 LIMIT 2
+
+---EX6
+SELECT tweet_id
+FROM Tweets
+WHERE LENGTH(contenT)>15
+
+---EX8
+select count(id)
+from employees
+where extract(month from joining_date) between 1 and 7
+and extract(year from joining_date) =2022
+
+---EX9
+select position('a' in first_name)
+from worker
+where first_name='Amitah'
+
+---EX10
+select substring(title, length(winery)+2,4)
+from winemag_p2
+where country='Macedonia'
